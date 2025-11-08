@@ -3,14 +3,13 @@ from typing import Callable
 
 
 def generator_numbers(text: str):
-
-    pattern = r'\s(\d+\.\d+)\s'
+    # Використовуємо саме пробіли, а не \s для суворої відповідності умові!
+    pattern = r' (\d+\.\d+) '
     for match in re.finditer(pattern, text):
         yield float(match.group(1))
 
 
 def sum_profit(text: str, func: Callable):
-
     return sum(func(text))
 
 
